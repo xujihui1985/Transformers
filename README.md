@@ -7,11 +7,11 @@ Transformers
 
 2. install yo 
 
-`npm install -g yo`
+  `npm install -g yo`
 
 3. install nodemon
 
-`npm install -g nodemon`
+  `npm install -g nodemon`
 
 2. cd into project directory
 
@@ -19,7 +19,7 @@ Transformers
 
 4. change default to https
 
-`git config --global url."https://".insteadOf git://`
+  `git config --global url."https://".insteadOf git://`
 
 5. `bower install`
 
