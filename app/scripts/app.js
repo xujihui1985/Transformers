@@ -11,7 +11,3 @@ angular.module('transformersApp', [])
         redirectTo: '/'
       });
   });
-
-$(function(){
-    $('.js-float-label-wrapper').FloatLabel();
-});

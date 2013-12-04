@@ -8,8 +8,8 @@ module.exports = {
         app.get('/', site.index);
 
         //dealing
-        app.get('/dealing', dealing.getAll);
-        app.get('/dealing/:id', function (req, res, next) {
+        app.get('/api/dealing', dealing.getAll);
+        app.get('/api/dealing/:id', function (req, res, next) {
             req.params.id = parseInt(req.params.id, 10);
             next();
         }, dealing.getById)
