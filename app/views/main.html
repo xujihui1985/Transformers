@@ -1,35 +1,51 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">transformersasdfasdf</h3>
-</div>
-
-<!-- <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div> -->
-
-<!-- <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-
- -->
+<!--container -->
+<div class="container">
+  <!--
+  <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href="#">Hackthons</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Shortcuts</a></li>
+          <li><a href="#">Overview</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+  </div>
+-->
+ <div id="splitlayout" class="splitlayout">
+        <div class="intro">
+            <div class="side side-left">
+                <div class="intro-content">
+                    <h1><span>Left Content</span></h1>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            <div class="side side-right">
+                <div class="intro-content">
+                    <h1><span>right Content</span></h1>
+                </div>
+                <div class="overlay"></div>
+            </div>
+        </div><!-- /intro -->
+        <div class="page page-right page-large">
+            <div class="page-inner">
+                <section>
+                    <!-- content -->
+                </section>
+                <section>
+                    <!-- content -->
+                </section>
+                <!-- ... -->
+            </div><!-- /page-inner -->
+        </div><!-- /page-right -->
+        <div class="page page-left page-fill">
+            <div class="page-inner">
+                <!-- ... -->
+            </div><!-- /page-inner -->
+        </div><!-- /page-left -->
+        <a href="#" class="back back-right" title="back to intro">?</a>
+        <a href="#" class="back back-left" title="back to intro">?</a>
+    </div><!-- /splitlayout -->
+</div><!-- /container -->
