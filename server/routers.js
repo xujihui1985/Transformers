@@ -9,8 +9,9 @@ module.exports = {
 
         //dealing
         app.get('/api/dealing', dealing.getAll);
+        app.post('/api/dealing', dealing.insert);
         app.get('/api/dealing/:id', dealing.getById);
-		app.post('/api/dealing/:id', dealing.saveItem);
+		app.put('/api/dealing/:id', dealing.saveItem);
     },
 
     init: function (refresh) {
@@ -18,13 +19,7 @@ module.exports = {
             MongoClient.connect("mongodb://localhost:27017/transformer", function (err, db) {
                 db.dropDatabase(function (err, result) {
                     db.dropCollection('dealing', function (err, result) {
-                        var collection = db.collection('dealing');
-                        collection.insert({_id: 1, description: 'moneymarket'}, {w: 1}, function (err, result) {
-                        });
-                        collection.insert({_id: 2, description: 'foreignexchange'}, {w: 1}, function (err, result) {
-                        });
-                        collection.insert({_id: 3, description: 'futures'}, {w: 1}, function (err, result) {
-                        });
+
                     });
                 });
             });

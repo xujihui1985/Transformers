@@ -1,13 +1,16 @@
 'use strict';
 
-angular.module('transformersApp', ["ngGrid"])
-angular.module('transformersApp', [])
-var transApp = angular.module('transformersApp', ['ngResource'])
+var transApp = angular.module('transformersApp', ['ngResource','ngGrid','btford.socket-io'])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {templateUrl: 'views/main.html',controller: 'MainCtrl'})
-	  .when('/deal', {templateUrl: 'views/deal.html', controller: 'DealCtrl'})
+	  .when('/', {templateUrl: 'views/deal.html', controller: 'DealCtrl'})
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).config(function (socketProvider) {
+    var mySocket = io.connect('http://localhost:5000');
+    // do stuff with mySocket
+    socketProvider.ioSocket(mySocket);
+});
+
+transApp.value('toastr',toastr);

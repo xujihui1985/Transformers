@@ -21,3 +21,10 @@ exports.saveItem = function (req, res, next) {
         res.json(item);
     });
 };
+
+exports.insert = function (req, res, next) {
+    var item = req.body;
+    dataProvider.dealing.saveItem(item.id, item).then(function (item) {
+        res.json(item);
+    });
+};

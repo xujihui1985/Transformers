@@ -1,10 +1,22 @@
 'use strict';
 
-angular.module('transformersApp')
-  .controller('DealCtrl', function ($scope) {
-    $scope.deals = [{"dealNumber":1,"dealDate":"2013-12-05","instrument":"Instrument A"},
-	 {"dealNumber":2,"dealDate":"2013-12-06","instrument":"Instrument B"},
-	 {"dealNumber":3,"dealDate":"2013-12-07","instrument":"Instrument C"}];
+transApp.controller('DealCtrl', ['$scope', 'dealService','socket','toastr', function ($scope, Deal,socket,toastr) {
 
-	$scope.gridOptions = { data: 'deals' };
-  });
+    socket.on('created', function (data) {
+        toastr.success('new deal has been created, dealNumber:'+data.dealNumber);
+    });
+
+    $scope.deals = Deal.query();
+    $scope.title = "Foreign Exchange";
+    $scope.model = Deal.new();
+    $scope.save = function (model) {
+        console.log(model);
+        var deal = new Deal(model);
+        deal.$save();
+        socket.emit('deal-created',model);
+    };
+    $scope.edit = function (id) {
+
+    };
+    $scope.gridOptions = { data: 'deals' };
+}]);
