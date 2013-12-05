@@ -24,3 +24,5 @@ Transformers
 5. `bower install`
 
 6. `nodemon app.js`
+
+7. Create MongoDB
