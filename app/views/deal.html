@@ -1,0 +1,70 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li><a ng-href="#">Home</a></li>
+    <li class="active"><a>Deal</a></li>
+  </ul>
+  <h3 class="text-muted">Transformers</h3>
+</div>
+
+<!--
+<div class="jumbotron">
+  <h1>'Allo, 'Allo!</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+    Always a pleasure scaffolding your apps.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+</div> 
+<div class="row marketing">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+  <div class="control-group">
+</div>
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+</div>
+
+-->
+
+<div>
+
+<!--
+   <div class="control-group">
+
+    <label class="control-label" for="inputDealNumber">Deal Number</label>
+    <input type="text" id="inputDealNumber" placeholder="">
+
+    <label class="control-label" for="inputDealDate">Deal Date</label>
+    <input type="text" id="inputDealDate" placeholder="">
+
+    <label class="control-label" for="inputInstrument">Instrument</label>
+    <input type="text" id="inputInstrument" placeholder="">
+
+  </div>
+-->
+
+ <div class="control-group">
+     <div ng-repeat="deal in deals">
+        <label class="control-label" for="inputDealNumber">Deal Number</label>
+        <div>{{deal.dealNumber}}</div>
+        <input type="text" id="inputDealNumber" ng-value="deal.dealNumber" placeholder="">
+    </div>  
+ </div>
+
+
+<div class="container">
+  <div class="row clearfix">
+      <div class="gridStyle" ng-grid="gridOptions"></div>
+  </div>
+</div>
+
+
+
+</div>
