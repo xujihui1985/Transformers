@@ -6,3 +6,4 @@ transApp.controller('MainCtrl', ['$scope', 'dealService',
         $scope.viewModel = dealService.get({id:1});
     }]
 );
+  
