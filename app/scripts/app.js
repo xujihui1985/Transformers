@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('transformersApp', [])
+var transApp = angular.module('transformersApp', ['ngResource'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
