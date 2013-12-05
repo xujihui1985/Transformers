@@ -28,8 +28,7 @@ io.sockets.on('connection', function(socket){
         socket.emit('deal-edited',deal);
     });
     socket.on('deal-created', function(deal){
-        console.log('event called');
-        io.sockets.emit('created',deal);
+        socket.broadcast.emit('created',deal);
     });
 });
 

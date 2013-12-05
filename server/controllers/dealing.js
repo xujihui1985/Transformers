@@ -24,7 +24,7 @@ exports.saveItem = function (req, res, next) {
 
 exports.insert = function (req, res, next) {
     var item = req.body;
-    dataProvider.dealing.saveItem(item.id, item).then(function (item) {
+    dataProvider.dealing.saveItem(item.dealNumber,item).then(function (item) {
         res.json(item);
     });
 };
