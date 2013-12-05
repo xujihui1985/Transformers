@@ -12,9 +12,16 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <!-- build:css({.tmp,app}) styles/main.css -->
-        <link rel="stylesheet" href="styles/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-floating-labels/floating-labels.css">
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css">
+ <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css">
+        <link rel="stylesheet" href="styles/charmsbar.css">
+
+        <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/icons.css" />
+        <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/component.css" />
         <!-- endbuild -->
 </head>
   <body ng-app="transformersApp">
@@ -28,7 +35,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container" ng-view="">
+
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -56,6 +65,7 @@
         <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+        <script src="bower_components/bootstrap-floating-labels/floating-labels.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
@@ -63,11 +73,25 @@
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <!-- endbuild -->
-
+        <script src="scripts/modernizr.custom.js"></script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-           <script src="scripts/controllers/deal.js"></script>
+        <script src="scripts/plugins/classie.js"></script>
+        <script src="scripts/plugins/mlpushmenu.js"></script>
         <!-- endbuild -->
+<div class="hidden-bar"></div>
+<div class="placeholder">
+   <div class="charmbar" id="trigger">
+     <div class="charmcontainer">
+      <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/search.png">
+      <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/share.png">
+      <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/startconsumer.png">
+      <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/devices.png">
+      <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/settings.png">
+     </div>
+    </div>
+</div>
 </body>
 </html>
+
