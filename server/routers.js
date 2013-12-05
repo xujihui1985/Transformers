@@ -12,7 +12,8 @@ module.exports = {
         app.get('/api/dealing/:id', function (req, res, next) {
             req.params.id = parseInt(req.params.id, 10);
             next();
-        }, dealing.getById)
+        }, dealing.getById);
+		app.post('/api/dealing/:id', dealing.saveItem);
     },
 
     init: function (refresh) {
