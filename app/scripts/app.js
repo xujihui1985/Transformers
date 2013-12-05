@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 angular.module('transformersApp', [])
   .config(function ($routeProvider) {
     $routeProvider
@@ -11,3 +11,4 @@ angular.module('transformersApp', [])
         redirectTo: '/'
       });
   });
+*/
