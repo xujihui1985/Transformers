@@ -11,3 +11,12 @@ exports.getById = function (req, res, next) {
         res.json(item);
     });
 }
+
+exports.saveItem = function (req, res, next) {
+	var item = req.body
+	  , id = req.params.id;
+	
+	dataProvider.dealing.saveItem(id, item).then(function(item){
+		res.json(item);
+	});
+};
