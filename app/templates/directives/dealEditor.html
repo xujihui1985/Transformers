@@ -1,12 +1,11 @@
-<div class="container">
 
-    <form role="form" class="form-inline">
+    <form role="form" class="form-inline" ng-submit="save(model)">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="form-group">
                     <label for="title">Deal No</label>
-                    <input class="form-control" type="text" name="title" placeholder="Title"
-                           ng-model="model.dealNumber" >
+                    <input class="form-control" type="text" name="title" placeholder="Deal Number"
+                           ng-model="model.dealNumber" ng-enter="save(model)" >
                 </div>
                 <div class="form-group">
                     <label for="title">Ticket Number</label>
@@ -81,7 +80,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="title">Deal Rate</label>
-                <input class="form-control" type="text" name="title" placeholder="Deal Rate" ng-model="model.dealDate">
+                <input datePicker class="form-control" type="text" name="title" placeholder="Deal Rate" ng-model="model.dealDate">
             </div>
             <div class="form-group col-md-3">
                 <label for="title">Near Rate</label>
@@ -90,4 +89,3 @@
         </div>
 
     </form>
-</div>

@@ -1,8 +1,14 @@
-<div style="margin-left: 10px">
-    <header>
-        <h1>{{title}} -- {{deals.length}}</h1>
-        <button type="button" class="btn btn-primary" ng-click="save(model)">Save</button>
-    </header>
+<div>
+
+	<div class="row">
+		<div class="col-md-6 col-md-8">
+			<h1>{{title}} -- {{deals.length}}</h1>
+		</div>
+		<div class="col-md-3 col-md-offset-3">
+			<button type="button" class="btn btn-primary" ng-click="save(model)">Save</button>
+		</div>
+	</div>
+	<div class="gridStyle" ng-grid="gridOptions"></div>
 
     <div ng-include="'/templates/directives/dealEditor.html'"></div>
 </div>

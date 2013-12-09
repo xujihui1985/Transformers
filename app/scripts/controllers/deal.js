@@ -12,19 +12,27 @@ transApp.controller('DealCtrl', ['$scope', 'dealService','socket','toastr', func
         }
 
     });
-
+    $scope.selectDeal = '<button id="editBtn" type="button" class="btn btn-default btn-sm" ng-click="edit(row)" ><span class="glyphicon glyphicon-edit"></span></button> '
     $scope.deals = Deal.query();
     $scope.title = "Foreign Exchange";
     $scope.model = Deal.new();
+    $scope.gridOptions = {
+     data: 'deals',
+     enableRowSelection:false,
+     columnDefs: [{field:'dealNumber', displayName:'Deal No'},{field:'ticketNumber', displayName:'Ticket No'},{displayName:'Edit',cellTemplate:$scope.selectDeal}]
+    };
     $scope.save = function (model) {
         var deal = new Deal(model);
         deal.$save();
-        $scope.deals.push(deal);
+        var existsDeal = $scope.deals.map(function(ele){
+            return ele.dealNumber;
+        }).indexOf(deal.dealNumber);
+        if(existsDeal<0){
+            $scope.deals.push(model);
+        }
         socket.emit('deal-created',model);
     };
-    $scope.edit = function (dealNumber) {
-        console.log(dealNumber);
-        $scope.model = Deal.get({id:dealNumber});
+    $scope.edit = function (row) {
+        $scope.model = Deal.get({id:row.entity.dealNumber});
     };
-    $scope.gridOptions = { data: 'deals' };
 }]);

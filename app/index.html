@@ -17,16 +17,25 @@
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/examples/non-responsive/non-responsive.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/css/datepicker.css">
     <link rel="stylesheet" href="bower_components/toastr/toastr.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css">
-    <link rel="stylesheet" href="styles/charmsbar.css">
+    <!-- <link rel="stylesheet" href="styles/charmsbar.css"> -->
 
     <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/normalize.css"/>
     <link rel="stylesheet" href="styles/charmsbar.css">
-    <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/demo.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/icons.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/component.css"/>
+    <style>
+        .gridStyle {
+            border: 1px solid rgb(212,212,212);
+            width: 400px; 
+            height: 100px;
+        }
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/demo.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/icons.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" href="styles/plugins/mutilevelmenu/css/component.css"/> -->
     <!-- endbuild -->
 </head>
 <body>
@@ -41,49 +50,50 @@
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
-<div class="hidden-bar"></div>
-<div class="charmbar" id="trigger">
-    <div class="charmcontainer">
-        <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/search.png">
-        <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/share.png">
-        <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/startconsumer.png">
-        <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/devices.png">
-        <img src="http://i1121.photobucket.com/albums/l517/grimmdev/Deviantart/Charmsbar/settings.png">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Transformer</a>
     </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#about">About</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Action <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Compare</a></li>
+            <li><a href="#">Swap</a></li>
+            <li><a href="#">Back To Back</a></li>
+          </ul>
+        </li>
+      </ul>
+     
+    </div><!--/.nav-collapse -->
+  </div>
 </div>
-
 <div class="container">
-
-    <!-- Push Wrapper -->
-    <div class="mp-pusher" id="mp-pusher">
-        <p><a href="#" id="trigger2"><span class="glyphicon glyphicon-align-justify"></span></a></p>
-        <multilevelMenu></multilevelMenu>
-
-        <div class="scroller"><!-- this is for emulating position fixed of the nav -->
-            <div class="scroller-inner">
-                <ng-view></ng-view>
-
-            </div>
-            <!-- /scroller-inner -->
-        </div>
-        <!-- /scroller -->
-
-    </div>
-    <!-- /pusher -->
-</div>
-<!-- /container -->
+    <ng-view></ng-view>
+ </div> <!-- /container -->
 
 <script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="bower_components/toastr/toastr.js"></script>
 <script src="bower_components/lodash/dist/lodash.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-socket-io/socket.js"></script>
-
 <script src="bower_components/ng-grid/ng-grid-2.0.7.debug.js"></script>
 
 <!-- build:js scripts/plugins.js -->
-<script src="bower_components/bootstrap-floating-labels/floating-labels.js"></script>
+<!-- <script src="bower_components/bootstrap-floating-labels/floating-labels.js"></script> -->
 <!-- endbuild -->
 
 <!-- build:js scripts/modules.js -->
@@ -97,10 +107,12 @@
 <script src="scripts/services/dealService.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/deal.js"></script>
-<script src="scripts/directives/multilevelMenu.js"></script>
+<script src="scripts/directives/trEnter.js"></script>
+<script src="scripts/directives/trDatePicker.js"></script>
+<!-- <script src="scripts/directives/multilevelMenu.js"></script> -->
 
-<script src="scripts/plugins/classie.js"></script>
-<script src="scripts/plugins/mlpushmenu.js"></script>
+<!-- <script src="scripts/plugins/classie.js"></script> -->
+<!-- <script src="scripts/plugins/mlpushmenu.js"></script> -->
 <!-- endbuild -->
 
 

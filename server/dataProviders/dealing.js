@@ -54,7 +54,7 @@ exports.saveItem = function (id, item) {
 	
 	// parse to number, if id is a string
 	id = +id;
-	
+	console.log(item);
 	mongoHandler.collection(deferred, 'dealing', function(def, col) {
 		col.count({_id: id}, function (err, count) {
 			if (count === 0) {
