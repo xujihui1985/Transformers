@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QUnit Composite Test Suite</title>
+    <link rel="stylesheet" href="../../app/bower_components/qunit/qunit/qunit.css">
+    <link rel="stylesheet" href="../../app/bower_components/qunit-composite/qunit-composite.css">
+    <script src="../../app/bower_components/qunit/qunit/qunit.js"></script>
+    <script src="../../app/bower_components/qunit-composite/qunit-composite.js"></script>
+    <script>
+        QUnit.testSuites([
+            "module2Test/runner.html",
+            "utilityTest/runner.html"
+        ]);
+    </script>
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture">
+</div>
+</body>
+</html>
