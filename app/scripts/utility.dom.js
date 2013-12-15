@@ -6,7 +6,16 @@ var root = window;
             createDiv: createDiv,
             setText: setText,
             findByText: findByText,
-            bindClick: bindClick
+            bindClick: bindClick,
+            callCallback: function (cb) {
+                cb();
+            },
+            callCallbackWithReturnValue: function(cb){
+                return cb();
+            },
+            callCallbackAndPassParameter: function(cb){
+                return cb('hello');
+            }
         };
 
         function createDiv(id) {
