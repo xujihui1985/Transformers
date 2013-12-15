@@ -1,6 +1,8 @@
 Transformers
 ============
 
+![](https://api.travis-ci.org/xujihui1985/Transformers.png)
+
 ## Build Env
 
 1. install node
