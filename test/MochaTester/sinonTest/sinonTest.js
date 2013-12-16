@@ -67,7 +67,8 @@ describe('stub test', function () {
     });
 
     it('should hasDeal if dataservice is work fine', function () {
-        var dataServiceStub = sinon.stub({getDeals:function(){}});
+        var dataServiceStub = sinon.stub({getDeals: function () {
+        }});
         dataServiceStub.getDeals.returns([
             {dealNumber: 1}
         ]);
@@ -76,11 +77,130 @@ describe('stub test', function () {
     });
 
     it('should throw exception if the closeout deal is not a future deal', function () {
-        var dataServiceStub = sinon.stub({getDeals:function(){}});
+        var dataServiceStub = sinon.stub({getDeals: function () {
+        }});
         var fudeal = new FuturesDeal(dataServiceStub);
         expect(function () {
             fudeal.closeOut({});
         }).to.throw(Error);
     });
 
+});
+
+describe('fake times tests', function () {
+
+    var clock,
+        initDate = +(new Date(2013, 0, 01));
+
+
+    beforeEach(function () {
+        clock = sinon.useFakeTimers(initDate);
+    });
+
+    afterEach(function () {
+        clock.restore();
+    });
+
+    it('should be able to fake the current date', function () {
+        // month begin with 0 to 11
+        var date1 = new Date();
+        console.log(date1.toLocaleDateString());
+
+        // move the clock forward 1 min
+        clock.tick(60000);
+        var date2 = new Date();
+        console.log(date2.getTime());
+        clock.restore();
+    });
+
+    it('should return correct welcome message in specified time', function () {
+
+        var message = utility.getWelcomeMessage();
+        expect(message).to.equal('Good Morning');
+
+        clock.tick((60000 * 60 * 13));
+        message = utility.getWelcomeMessage();
+        expect(message).to.equal('Good Afternoon');
+
+        clock.tick((60000 * 60 * 6));
+        message = utility.getWelcomeMessage();
+        expect(message).to.equal('Good Evening');
+    });
+
+});
+
+describe('use fake xhr', function () {
+    it('should intecept all the incoming request', function () {
+        var requests = [];
+        var xhr = sinon.useFakeXMLHttpRequest();
+        xhr.onCreate = function (req) {
+            requests.push(req);
+        }
+        jQuery.getJSON('/some/url');
+        expect(requests.length).to.equal(1);
+        requests.forEach(function (req) {
+            expect(req.url).to.equal('/some/url');
+            expect(req.method).to.equal('GET');
+        });
+        xhr.restore();
+    });
+
+    it('should get the data from API', function () {
+        var requests = [];
+        var xhr = sinon.useFakeXMLHttpRequest();
+        xhr.onCreate = function (req) {
+            requests.push(req);
+        };
+        var spy = sinon.spy();
+        utility.dataService.getAllDeals().done(spy);
+        requests[0].respond(200, {"Content-Type": "application/json"}, '{"dealNumber":1}');
+        requests.forEach(function (req) {
+            expect(req.url).to.equal('/api/v1/dealing');
+            expect(req.method).to.equal('GET');
+        });
+        console.log(spy.args[0][0]);
+        expect(spy.calledWith({dealNumber: 1})).to.be.true;
+        xhr.restore();
+    });
+
+
+});
+
+describe('fake server test', function () {
+    var server;
+    beforeEach(function () {
+        server = sinon.fakeServer.create();
+        server.respondWith('GET', '/api/v1/dealing', [200, {"Content-Type": "application/json"}, JSON.stringify({dealNumber: 2})]);
+        //with regex to match such url as /api/v1/dealing/1
+        server.respondWith('GET', /\/api\/v1\/dealing\/(\d+)/, [200, {"Content-Type": "application/json"}, JSON.stringify({dealNumber: 1, instrument: 'test'})]);
+    });
+
+    afterEach(function () {
+        server.restore();
+    });
+
+    it('should also get the data from API', function () {
+        var spy = sinon.spy();
+        utility.dataService.getAllDeals().done(spy);
+        server.respond();
+        sinon.assert.calledWith(spy, {dealNumber: 2});
+    });
+
+    it('should get the specific deal from api', function () {
+        var spy = sinon.spy();
+        utility.dataService.getDeal(1).done(spy);
+        server.respond();
+        sinon.assert.calledWith(spy, {dealNumber: 1, instrument: 'test'});
+    });
+});
+
+describe('when API ready', function () {
+    it.skip('should also get the data from API', function (done) {
+
+        utility.dataService.getAllDeals().then(function (result) {
+            expect(result.name).to.equal('transformers');
+            expect(result.dependencies.arr.length).to.equal(3);
+            done();
+        });
+    });
 });
