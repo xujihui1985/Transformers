@@ -135,7 +135,7 @@ describe('use fake xhr', function () {
         var xhr = sinon.useFakeXMLHttpRequest();
         xhr.onCreate = function (req) {
             requests.push(req);
-        }
+        };
         jQuery.getJSON('/some/url');
         expect(requests.length).to.equal(1);
         requests.forEach(function (req) {

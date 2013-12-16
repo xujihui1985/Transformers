@@ -21,21 +21,3 @@ var port = process.env.PORT || 3002;
 app.listen(port, function () {
     console.log("Listening on " + port);
 });
-
-/*
-
- var http = require('http'),
- fs = require('fs');
-
- http.createServer(createHandler()).listen(3001);
-
- function createHandler() {
- return function (req, res) {
- if (req.url === '/api/v1/dealing') {
- res.writeHead(200, {'Content-Type': 'application/json'});
- fs.createReadStream(__dirname + '/testData.json').pipe(res);
- } else {
- res.end('error');
- }
- };
- }*/
