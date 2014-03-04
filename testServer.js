@@ -17,7 +17,7 @@ app.get('/api/v1/dealing', function (req, res, next) {
     fs.createReadStream(__dirname + '/test/testData.json').pipe(res);
 });
 
-var port = process.env.PORT || 3002;
+var port = process.env.PORT || 3003;
 app.listen(port, function () {
     console.log("Listening on " + port);
 });
