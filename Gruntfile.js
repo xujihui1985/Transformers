@@ -2,6 +2,10 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         testConfig: grunt.file.readJSON('test.json'),
+        path: {
+            build: 'build',
+            release: 'release'
+        },
         mocha: {
             list: {
                 src: ['<%= testConfig.src %>'],
@@ -19,11 +23,72 @@ module.exports = function (grunt) {
                     run: true
                 }
             }
+        },
+        copy: {
+            build: {
+                files: [
+                    {
+                        expand: true, 
+                        cwd:'app/',
+                        src:['styles/*.css'],
+                        dest:'build/asset/style/',
+                        flatten: true
+                    },
+                    {
+                        expand: true, 
+                        cwd:'app/',
+                        src:['scripts/*.js'],
+                        dest:'build/app/',
+                        flatten: true 
+                    }
+                ]
+            },
+            release: {
+                files: [
+                    {
+                        expand: true, 
+                        cwd:'app/',
+                        src:['styles/*.css'],
+                        dest:'release/asset/style/',
+                        flatten: true
+                    },
+                    {
+                        expand: true, 
+                        cwd:'app/',
+                        src:['scripts/*.js'],
+                        dest:'release/app/',
+                        flatten: true 
+                    }
+                ]
+            }
+        },
+        clean: {
+            build: {
+                src:['<%= path.build %>']
+            },
+            release: {
+                src:['<%= path.release %>']
+            }
+        },
+        concat: {
+            buildCss: {
+                src:[ 'app/styles/*.css' ],
+                dest:'release/asset/style/release.css',
+            },
+            buildVendorJs: {
+                src:[ 'app/scripts/*.js' ],
+                dest:'release/asset/scripts/release.js'
+            },
         }
     });
 
     grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.registerTask('default', ['mocha:test']);
+    grunt.registerTask('build', ['clean:build','copy:build']);
+    grunt.registerTask('release', ['clean:release','copy:release']);
 
 }
 
